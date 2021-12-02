@@ -302,6 +302,7 @@ type RunOptions struct {
 	Privileged   bool
 	User         string
 	Tty          bool
+	Platform     string
 }
 
 // BuildOptions is used to pass in optional parameters when building a container
@@ -439,6 +440,7 @@ func (d *Pool) RunWithOptions(opts *RunOptions, hcOpts ...func(*dc.HostConfig)) 
 			StopSignal:   "SIGWINCH", // to support timeouts
 			User:         opts.User,
 			Tty:          opts.Tty,
+			Platform:     opts.Platform,
 		},
 		HostConfig:       &hostConfig,
 		NetworkingConfig: &networkingConfig,
